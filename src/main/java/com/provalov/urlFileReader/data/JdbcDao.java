@@ -65,8 +65,8 @@ public class JdbcDao {
     }
 
     public <T> List<T> getAll(Class<T> clazz, String tableName, List<String> valueNames) {
-        valueNames.add("id"); // BE CAREFUL!!! takes  additional 'id' column for all queries
-        StringBuilder query = new StringBuilder("SELECT ");
+        // BE CAREFUL!!! takes  additional 'id' column for all queries
+        StringBuilder query = new StringBuilder("SELECT id,");
         StringJoiner sj = new StringJoiner(", ");
         valueNames.forEach(sj::add);
         query.append(sj).append(" FROM ").append(tableName);
